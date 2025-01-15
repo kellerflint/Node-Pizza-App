@@ -1,6 +1,8 @@
 # Dependencies
 node_modules/
 
-# package-lock.json is automatically generated
-# Some developers choose to ignore it, but we'll track it for consistency
-# package-lock.json 
+# Environment variables
+.env
+
+# VSCode settings
+.vscode/
