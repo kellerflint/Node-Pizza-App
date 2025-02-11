@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Order Confirmed - Poppa's Pizza</title>
+    <link rel="icon" type="image/png" href="images/pizza-slice.png">
+    <link rel="stylesheet" href="css/base-styles.css">
+</head>
+<body>
+    <div id="main">
+        <header>
+            <h1>Order Confirmed!</h1>
+            <p>Thank you for ordering from Poppa's Pizza</p>
+            <a href="/" class="main-button">Place Another Order</a>
+        </header>
+
+        <div class="content">
+            <p>Your order has been received and we'll start working on it right away!</p>
+            
+            <div class="order-details">
+                <h2>Order Details</h2>
+                <p>Name: <%= order.fname %> <%= order.lname %></p>
+                <p>Email: <%= order.email %></p>
+                <p>Method: <%= order.method %></p>
+                <p>Size: <%= order.size %></p>
+                <p>Toppings: <%= Array.isArray(order.toppings) ? order.toppings.join(', ') : order.toppings %></p>
+            </div>
+        </div>
+    </div>
+</body>
+</html> 

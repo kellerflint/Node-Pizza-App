@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin - Poppa's Pizza</title>
+    <link rel="icon" type="image/png" href="images/pizza-slice.png">
+    <link rel="stylesheet" href="css/base-styles.css">
+    <link rel="stylesheet" href="css/admin-styles.css">
+</head>
+<body>
+    <div id="main">
+        <header>
+            <h1>Order Management</h1>
+            <p>View all pizza orders</p>
+            <a href="/" class="main-button">Back to Order Form</a>
+        </header>
+
+        <div class="content">
+            <h2>All Orders</h2>
+            <% if (orders.length === 0) { %>
+                <p>No orders yet!</p>
+            <% } else { %>
+                <% orders.forEach(order => { %>
+                    <div class="order-card">
+                        <h3><%= order.fname %> <%= order.lname %></h3>
+                        <p>Email: <%= order.email %></p>
+                        <p>Method: <%= order.method %></p>
+                        <p>Size: <%= order.size %></p>
+                        <p>Toppings: <%= Array.isArray(order.toppings) ? order.toppings.join(', ') : order.toppings %></p>
+                        <p class="timestamp">Ordered: <%= order.timestamp.toLocaleString() %></p>
+                    </div>
+                <% }); %>
+            <% } %>
+        </div>
+    </div>
+</body>
+</html> 

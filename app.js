@@ -10,6 +10,9 @@ app.use(express.urlencoded({ extended: true }));
 // Serve static files from the 'public' directory
 app.use(express.static('public'));
 
+// Add EJS as template engine
+app.set('view engine', 'ejs');
+
 // Define the port number where our server will listen
 const PORT = 3000;
 
@@ -49,25 +52,13 @@ app.post('/submit-order', (req, res) => {
     // Log the order to the console
     console.log(orders);
 
-    // Send confirmation page
-    res.sendFile(`${import.meta.dirname}/views/confirmation.html`);
+    // Render confirmation page with order details
+    res.render('confirmation', { order });
 });
 
 // Admin route to view all orders
-/*
 app.get('/admin/orders', (req, res) => {
-    res.send(orders);
-});
-*/
-
-// We could even generate the html for the admin page.
-app.get('/admin/orders', (req, res) => {
-    let html = '<h1>Orders</h1><ul>';
-    for (const order of orders) {
-        html += `<li>${order.fname} ${order.lname} - ${order.email} - ${order.method} - ${order.toppings} - ${order.size} - ${order.timestamp}</li>`;
-    }
-    html += '</ul>';
-    res.send(html);
+    res.render('admin', { orders });
 });
 
 // Start the server and make it listen on our specified port
